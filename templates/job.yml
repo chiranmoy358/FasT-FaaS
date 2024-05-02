@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+
+kind: Job
+
+metadata:
+  name: APPNAME-DEPLID
+
+spec:
+  template:
+    spec:
+      containers:
+      - name: APPNAME
+        image: APPNAME-img
+        imagePullPolicy: Never
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+      restartPolicy: Never
+

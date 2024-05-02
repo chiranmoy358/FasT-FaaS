@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deploy Apps</title>
+</head>
+<body>
+    <a href="/"><button>Home</button></a>
+    <h1>Apps Submitted</h1>
+    {% for app_name in app_names %}
+    <li>
+        {{ app_name }}
+        <a href="{{ url_for('deploy', app_name=app_name) }}"><button>Deploy</button></a>
+        <form action="{{ url_for('delete_app', app_name=app_name) }}" method="post" style="display: inline;">
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+    {% endfor %}
+</body>
+</html>

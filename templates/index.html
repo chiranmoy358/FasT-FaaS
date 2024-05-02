@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast FaaS</title>
+    <script>
+        function addModuleInput() {
+            var container = document.getElementById("moduleInputs");
+            var newInput = document.createElement("div");
+            newInput.innerHTML = '<input type="text" name="module" placeholder="Module name"><br><br>';
+            container.appendChild(newInput);
+        }
+    </script>
+</head>
+<body>
+    <h1>FasT FaaS</h1>
+    <a href="/apps"><button>Apps Submitted</button></a><br><br>
+    <form action="/submit" method="post">
+        <label for="code">App Name:</label><br>
+        <input type="text" name="app_name" placeholder="My App"><br><br>
+        <label for="code">Python Code:</label><br>
+        <textarea id="code" name="code" rows="10" cols="50"></textarea><br><br>
+        <label for="module">Modules:</label><br>
+        <div id="moduleInputs">
+            <input type="text" name="module" placeholder="Module name"><br><br>
+        </div>
+        <button type="button" onclick="addModuleInput()">Add Module</button><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
