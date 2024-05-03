@@ -22,7 +22,7 @@ pod_name=$(kubectl get pods -l job-name=$job_name -o=jsonpath='{.items[0].metada
 output=$(kubectl logs $pod_name)
 
 echo $output
-echo Execution Time: ${execution_time}
+echo ${execution_time} >> ./$app_name/exec_times.txt
 
 kubectl delete job $job_name 1> /dev/null
 

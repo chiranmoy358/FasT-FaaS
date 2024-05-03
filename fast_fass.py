@@ -1,6 +1,5 @@
-from os import makedirs, rmdir
+from os import makedirs
 from shutil import rmtree
-from uuid import uuid4
 from flask import Flask, render_template, request, redirect, url_for
 from subprocess import Popen as exec, run
 
@@ -23,6 +22,9 @@ def submit():
     arg1 = args[0] if len(args) else "DUMMY"
 
     with open(apps_list, 'a') as f:
+        f.write(app_name + '\n')
+
+    with open(".gitignore", 'a') as f:
         f.write(app_name + '\n')
 
     makedirs(f'{app_name}')
