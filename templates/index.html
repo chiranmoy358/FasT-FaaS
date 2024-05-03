@@ -11,6 +11,13 @@
             newInput.innerHTML = '<input type="text" name="module" placeholder="Module name"><br><br>';
             container.appendChild(newInput);
         }
+
+        function addArgumentInput() {
+            var container = document.getElementById("argumentInputs");
+            var newInput = document.createElement("div");
+            newInput.innerHTML = '<input type="text" name="argument" placeholder="Argument"><br><br>';
+            container.appendChild(newInput);
+        }
     </script>
 </head>
 <body>
@@ -21,6 +28,10 @@
         <input type="text" name="app_name" placeholder="My App"><br><br>
         <label for="code">Python Code:</label><br>
         <textarea id="code" name="code" rows="10" cols="50"></textarea><br><br>
+        <div id="argumentInputs">
+            <input type="text" name="argument" placeholder="Argument"><br><br>
+        </div>
+        <button type="button" onclick="addArgumentInput()">Add Argument</button><br><br>
         <label for="module">Modules:</label><br>
         <div id="moduleInputs">
             <input type="text" name="module" placeholder="Module name"><br><br>

@@ -1,9 +1,10 @@
 app_name=$1
 depl_id=$2
+arg1=$3
 yml_path=./$app_name/$depl_id.yml
 job_name=$app_name-$depl_id
 
-cat ./templates/job.yml | sed s/APPNAME/$app_name/ | sed s/DEPLID/$depl_id/ >> $yml_path
+cat ./templates/job.yml | sed s/APPNAME/$app_name/ | sed s/DEPLID/$depl_id/ | sed s/ARG1/$arg1/ >> $yml_path
 
 kubectl apply -f $yml_path 1> /dev/null
 

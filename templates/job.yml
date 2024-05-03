@@ -11,6 +11,7 @@ spec:
       containers:
       - name: APPNAME
         image: APPNAME-img
+        args: ["ARG1"]
         imagePullPolicy: Never
         resources:
           limits:

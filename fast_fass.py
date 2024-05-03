@@ -19,20 +19,25 @@ def submit():
     app_name = request.form['app_name']
     code = request.form['code']
     modules = request.form.getlist('module')
+    args = request.form.getlist('argument')
+    arg1 = args[0] if len(args) else "DUMMY"
+
+    with open(apps_list, 'a') as f:
+        f.write(app_name + '\n')
 
     makedirs(f'{app_name}')
 
     with open(f'{app_name}/app.py', 'w') as f:
         f.write(code)
 
+    with open(f'{app_name}/arg.txt', 'w') as f:
+        f.write(arg1)
+
     with open(f'{app_name}/requirements.txt', 'w') as f:
         for module in modules:
             f.write(module + '\n')
 
-    exec([f'./gen_depl_logic.sh {app_name}'], shell=True)
-
-    with open(apps_list, 'a') as f:
-        f.write(app_name + '\n')
+    exec([f'./gen_depl_logic.sh {app_name} {arg1}'], shell=True)
 
     return redirect(url_for('index'))
 
